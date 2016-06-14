@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <title>AGREHABR</title>
     <link rel="stylesheet" href="css/style.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="js/dropdown.js"></script>
   </head>
   <body>
     <header>
@@ -16,30 +19,30 @@
     </header>
     <div class="body_container">
       <ul class="sort_menu">
-        <li class="menu_item">
-          <a href="all" title="all" class="selected_item">Все подряд *</a>
+        <li class="menu_item" id="theme">
+          <div class="selected_item"><span>Все подряд</span></div>
           <ul class="dropdown_list">
-            <li class="active"><a href="all" title="all">Все подряд</a></li>
-            <li><a href="development">Разработка</a></li>
-            <li><a href="design">Дизайн</a></li>
-            <li><a href="management">Управление</a></li>
-            <li><a href="marketing">Маркетинг</a></li>
-            <li><a href="different">Разное</a></li>
+            <li>Все подряд</li>
+            <li>Разработка</li>
+            <li>Дизайн</li>
+            <li>Управление</li>
+            <li>Маркетинг</li>
+            <li>Разное</li>
           </ul>
         </li>
-        <li class="menu_item">
-          <a href="all" title="curr_day" class="selected_item">За последние сутки *</a>
+        <li class="menu_item" id="time">
+          <div class="selected_item"><span>За последние сутки</span></div>
           <ul class="dropdown_list">
-            <li class="active"><a href="curr_day" title="curr_day">За последние сутки</a></li>
-            <li><a href="last_day" title="last_day">Вчера</a></li>
-            <li><a href="week" title="week">За 7 дней</a></li>
+            <li class="active">За последние сутки</li>
+            <li>Вчера</li>
+            <li>За 7 дней</li>
           </ul>
         </li>
-        <li class="menu_item">
-          <a href="all" title="all" class="selected_item">по дате *</a>
+        <li class="menu_item" id="sort">
+          <div class="selected_item"><span>по дате</span></div>
           <ul class="dropdown_list">
-            <li class="active"><a href="all" title="all">по дате</a></li>
-            <li><a href="rate" title="rate">по популярности</a></li>
+            <li class="active">по дате</li>
+            <li>по популярности</li>
           </ul>
         </li>
       </ul>

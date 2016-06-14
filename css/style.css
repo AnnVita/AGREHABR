@@ -139,8 +139,10 @@ header
 
 .menu_item
 {
-    margin: 0 20px 0 0;
     display: inline-block;
+    width: 15%;
+    box-sizing: border-box;
+    text-align: center;
 }
 
 .dropdown_list
@@ -148,16 +150,13 @@ header
     background-color: #fff;
     position: absolute;
     border: 1px solid #008B8B;
+    display: none;
 }
 
 .dropdown_list li
 {
     padding: 5px 20px;
     text-align: center;
-}
-
-.dropdown_list li a
-{
     color: #20b29A;
     font-family: 'Source Sans Pro', Arial, Verdana;
     font-size: 15px;
