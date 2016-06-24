@@ -2,10 +2,10 @@
     require_once 'simple_html_dom.php';
     require_once 'date.inc.php';
     header('Content-type: text/html; charset=utf-8');
-    function getPostInfo()
+    function getPostInfo($i)
     {
-        $data = file_get_html('https://habrahabr.ru/all/');
-        $post = $data -> find(".post", 1);
+        $data = file_get_html('http://habrahabr.ru/all/');
+        $post = $data -> find(".post", $i);
         if($post -> innertext != "")
         {
             $time = $post -> find(".post__header span.post__time_published", 0);
@@ -13,8 +13,8 @@
             $flow = $post -> find(".post__header h2 a.post__flow", 0);
             $flow = $flow -> innertext;
             $title = $post -> find(".post__header h2 a.post__title_link", 0);
-            $title = $title -> innertext;
             $href =  $title -> href;
+            $title = $title -> innertext;
             foreach($post -> find(".post__header .hubs a.hub") as $hub)
             {
                 $hubs[] =  $hub -> innertext;
@@ -39,4 +39,5 @@
                                "favorite" => $favorite,
                           );
         return $postArray;
-    }    
+    }
+    
