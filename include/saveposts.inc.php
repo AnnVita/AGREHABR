@@ -5,13 +5,14 @@
     dbInitialConnect();
     $onePost = getPostInfo(1);
     function postToDatabase($post)
+            //CONCAT(str1,str2,...)
     {
         $hubsList = implode("," , $onePost["hubs"]);
         $query = dbQuery("INSERT INTO posts (post_time, flow, title, href, hubs, description, views, favorite) VALUES(" . $onePost["time"] . ", '" . $onePost["flow"] . "', '" . $onePost["title"] . "', '" . $onePost["href"] . "', '" . $hubsList . "', '" . $onePost["description"] . "', '" . $onePost["views"] . "', '" . $onePost["favorite"] . "')");
     }
     function fillDatabase()
     {
-        //if not emty
+        //if not empty
           //get last id
         //while post date > now date - 30 && title and date of last id <> getted post && i <= 10
           

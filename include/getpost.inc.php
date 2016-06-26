@@ -2,42 +2,51 @@
     require_once 'simple_html_dom.php';
     require_once 'date.inc.php';
     header('Content-type: text/html; charset=utf-8');
-    function getPostInfo($i)
+    function getLastIdFromPage($pageName)
     {
-        $data = file_get_html('http://habrahabr.ru/all/');
-        $post = $data -> find(".post", $i);
-        if($post -> innertext != "")
+        $html = file_get_html($pageName);
+        if(!$html)
         {
-            $time = $post -> find(".post__header span.post__time_published", 0);
-            $time = remakeDate($time -> innertext);
-            $flow = $post -> find(".post__header h2 a.post__flow", 0);
-            $flow = $flow -> innertext;
-            $title = $post -> find(".post__header h2 a.post__title_link", 0);
-            $href =  $title -> href;
-            $title = $title -> innertext;
-            foreach($post -> find(".post__header .hubs a.hub") as $hub)
-            {
-                $hubs[] =  $hub -> innertext;
-            }
-            $shortDescription = $post -> find(".post__body div.content", 0);
-            $shortDescription = $shortDescription -> innertext;
-            $views = $post -> find(".post__footer div.views-count_post", 0);
-            $views = $views -> innertext;
-            $favorite = $post -> find(".post__footer span.favorite-wjt__counter", 0);
-            $favorite = $favorite -> innertext;
+            $postId = -1;
         }
-        $data->clear();
-        unset($data);
-        $postArray = array(
-                               "time" => $time,
-                               "flow" => $flow,
-                               "title" => $title,
-                               "href" => $href,
-                               "hubs" => $hubs,
-                               "description" => $shortDescription,
-                               "views" => $views,
-                               "favorite" => $favorite,
-                          );
-        return $postArray;
+        else
+        {
+            $postId = $html -> find(".post", 0) -> id;
+            $postId = (int) preg_replace('/[^0-9]/', '', $postId);
+        }
+        $html -> clear();
+        unset($html);
+        return $postId;
     }
-    
+    function strOfFoundedInObj($domObject, $innerInfoType = innertext)
+    {
+        foreach($domObject as $item)
+        {
+            $itemsArray[] = ($item -> $innerInfoType);
+        }
+        $itemsStr = implode("," , $itemsArray);
+        return $itemsStr;
+    }
+    function getOnePost($pageName, $postId)
+    {
+        $post = file_get_html($pageName . $postId);
+        if(!$post)
+        {
+            $item = array();
+        } 
+        else
+        {
+            $item['time'] = remakeDate($post -> find(".post__header span.post__time_published", 0) -> innertext);
+            $item['flow'] = $post -> find(".post__header h1 a.post__flow", 0) -> innertext;
+            $item['title'] = $post -> find(".post__header h1 span", 0) -> plaintext;
+            $item['id'] =  $postId;
+            $item['hubs'] = strOfFoundedInObj($post -> find(".post__header .hubs a.hub"));
+            $item['fullText'] = $post -> find(".post div.content", 0) -> innertext;
+            $item['views'] = $post -> find("div.views-count_post", 0) -> innertext;
+            $item['favorite'] = $post -> find("span.favorite-wjt__counter", 0) -> innertext;
+            $item['tags'] = strOfFoundedInObj($post -> find("ul.tags li a"));;
+        } 
+        $post -> clear();
+        unset($post);
+        return $item;
+    }
