@@ -87,7 +87,6 @@ header
     font-family: 'Source Sans Pro', Arial, Verdana;
     font-size: 13px;
     color: #fff;
-    text-transform: capitalize;
     display: block;
     padding: 7px 0 7px;
 }
@@ -101,6 +100,7 @@ header
 {
     border-bottom: 2px solid #fff;
     padding-bottom: 5px;
+    cursor: pointer;
 }
 
 .body_container
@@ -112,8 +112,6 @@ header
 .content_container
 {
     margin: auto;
-    width: 85%;
-    height: 1000px;
     background-color: #fff;
     padding: 5px 10px;
     box-sizing: border-box;
@@ -122,7 +120,6 @@ header
 .sort_menu
 {
     background-color: #20b29A;
-    width: 85%;
     margin: 0 auto 10px auto;
     padding: 5px 0 5px 10px;
     box-sizing: border-box;
@@ -131,16 +128,16 @@ header
 .selected_item
 {
     font-family: 'Source Sans Pro', Arial, Verdana;
-    font-size: 13px;
     color: #fff;
-    text-transform: capitalize;
     display: block;
+    text-align: center;
+    cursor: pointer;
 }
 
 .menu_item
 {
     display: inline-block;
-    width: 15%;
+    width: 20%;
     box-sizing: border-box;
     text-align: center;
 }
@@ -156,7 +153,6 @@ header
 .dropdown_list li
 {
     padding: 5px 20px;
-    text-align: center;
     color: #20b29A;
     font-family: 'Source Sans Pro', Arial, Verdana;
     font-size: 15px;
@@ -165,6 +161,7 @@ header
 .dropdown_list li:hover
 {
     background-color: #F0FFFF;
+    cursor: pointer;
 }
 
 .publication
@@ -182,17 +179,12 @@ header
     font-size: 19px;
 }
 
-.tag_list
-{
-    
-}
-
-.tag_list li
+.hub_list li
 {
     display: inline-block;
 }
 
-.tag_list li a
+.hub_list li a
 {
     color: #5F9EA0;
     font-family: 'Source Sans Pro', Arial, Verdana;
@@ -204,7 +196,7 @@ header
     display: inline-block;
     color: #5F9EA0;
     font-family: 'Source Sans Pro', Arial, Verdana;
-    font-size: 18px;
+    font-size: 19px;
 }
 
 .description
@@ -224,6 +216,18 @@ header
         {
         width: 1200px;
     }
+    .content_container
+       {
+        width: 95%;
+    }
+    .sort_menu
+    {
+        width: 95%;
+    }
+    .selected_item
+        {
+        font-size: 13px;
+    }
 }
 
 @media screen and (max-width: 1260px) and (min-width: 1025px)
@@ -235,5 +239,41 @@ header
     .body_container
         {
         width: 90%;
+    }
+    .content_container
+        {
+        width: 85%;
+    }
+    .sort_menu
+    {
+        width: 85%;
+    }
+    .selected_item
+        {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 768px)
+{
+    .header_container
+        {
+        width: 100%;
+    }
+    .body_container
+        {
+        width: 100%;
+    }
+    .content_container
+        {
+        width: 100%;
+    }
+    .sort_menu
+       {
+        width: 100%;
+    }
+    .selected_item
+        {
+        font-size: 18px;
     }
 }

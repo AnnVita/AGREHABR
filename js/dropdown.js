@@ -1,12 +1,14 @@
+var ID_THEME = "#theme";
+var ID_TIME = "#time";
+var ID_SORT = "#sort";
 $(function(){
-/* выбор города */
-   $("#theme .selected_item").click
+   $(ID_THEME + " " + ".selected_item").click
    (
        function(){
-                     $("#theme .dropdown_list").slideToggle('fast');
+                     $(ID_THEME + " " + ".dropdown_list").slideToggle('fast');      
                  }
    );
-   $('#theme ul.dropdown_list li').click
+   $(ID_THEME + " " + "ul.dropdown_list li").click
    (
        function()
        {
@@ -16,13 +18,13 @@ $(function(){
            $("#theme .selected_item span").html(tx);
            $("#theme .selected_item").html(tv);
        });
-    $("#time .selected_item").click
+    $(ID_THEME + " " + ".selected_item").click
    (
        function(){
                      $("#time .dropdown_list").slideToggle('fast');
                  }
    );
-   $('#time ul.dropdown_list li').click
+   $(ID_THEME + " " + "ul.dropdown_list li").click
    (
        function()
        {
