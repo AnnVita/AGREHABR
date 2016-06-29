@@ -10,11 +10,9 @@
         dbInitialConnect();
         $lastInsertedPostDB = getLastPageFromDB();
         $postId = getLastIdFromPage(ALL_POSTS_URL);
-        echo $postId;
         if($postId > 0)
         {
             $postFromPage = getOnePost(POSTS_URL, $postId);
-            var_dump($postFromPage);
             while(($postFromPage["post_time"] > strtotime("-" . TIME_RANGE . " day")) || empty($postFromPage))
             {
                 if(!empty($postFromPage) && (($lastInsertedPostDB['page_id'] != $postFromPage['page_id']) || empty($lastInsertedPostDB)))
