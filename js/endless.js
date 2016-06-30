@@ -1,3 +1,4 @@
+var lastId = 0;
 var engine = {
 
 	posts : [],
@@ -6,13 +7,17 @@ var engine = {
 	count : 5,
 
 	render : function(obj){
-		var xhtml = '<li class="publication">';
+		var xhtml = '<li class="publication" id="post_' + obj.page_id + '">';
+                xhtml += '<div class = date>' + obj.post_time + '</div>';
                 xhtml += '<a href="stream" title="Stream" class="publication_stream">' + obj.flow + ' <i class="fa fa-arrow-right" aria-hidden="true"></i></a>';
                 xhtml += '<a href="title" title="title" class="publication_title"> ' + obj.title + '</a>';
                 xhtml += '<ul class="hub_list"> <li><a href="URL" title="Hub">' + obj.hubs + '</a></li></ul>';
-                xhtml += '<div class="description">' + obj.full_text + '</div>';
+                xhtml += '<div class="description">' + obj.description + '</div>';
+                xhtml += '<ul class="hub_list"> <li><a href="URL" title="Hub">' + obj.tags + '</a></li></ul>';
+                xhtml += '<div class="publication_footer">';
+                xhtml += '</div>';
                 xhtml += '</li>';
-
+                lastId++;
 		return xhtml;
 	},
 
@@ -38,7 +43,8 @@ var engine = {
 		posts = (posts instanceof Array) ? posts : [];
 		this.posts = this.posts.concat(posts);
 
-		for (var i=0, len = posts.length; i<len; i++) {
+		for (var i=0, len = posts.length; i < len; i++) 
+                {
 			this.target.append(this.render(posts[i]));
 		}
 
@@ -50,20 +56,12 @@ var engine = {
 	get : function() {
 
 		if (!this.target || this.busy) return;
-
-		if (this.posts && this.posts.length) 
-                {
-			var lastId = this.posts[this.posts.length-1].id;
-		} else 
-                {
-			var lastId = 0;
-		}
-
 		this.setBusy(true);
 		var that = this;
 
 		$.getJSON('include/poststopage.php', {count:this.count, last:lastId},
-			function(data){
+			function(data)
+                        {
 				if (data.length > 0) 
                                 {
 					that.append(data);
@@ -76,10 +74,12 @@ var engine = {
 	showLoading : function(bState){
 		var loading = $('#loading');
 
-		if (bState) {
+		if (bState) 
+                {
 			$(this.target).append(loading);
 			loading.show('slow');
-		} else {
+		} else 
+                {
 			$('#loading').hide();
 		}
 	},

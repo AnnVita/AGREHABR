@@ -1,6 +1,11 @@
 var ID_THEME = "#theme";
 var ID_TIME = "#time";
 var ID_SORT = "#sort";
+var postsParams = {
+                     theme: "all",
+                     time: "week",
+                     sortby: "date"
+                  };
 $(function(){
    $(ID_THEME + " " + ".selected_item").click
    (
@@ -17,37 +22,40 @@ $(function(){
            $("#theme .dropdown_list").slideUp('fast');
            $("#theme .selected_item span").html(tx);
            $("#theme .selected_item").html(tv);
+           postsParams.theme = $(this).attr('value');           
        });
-    $(ID_THEME + " " + ".selected_item").click
+   $(ID_TIME + " " + ".selected_item").click
    (
        function(){
-                     $("#time .dropdown_list").slideToggle('fast');
+                     $(ID_TIME + " " + ".dropdown_list").slideToggle('fast');
                  }
    );
-   $(ID_THEME + " " + "ul.dropdown_list li").click
+   $(ID_TIME + " " + "ul.dropdown_list li").click
    (
        function()
        {
            var tx = $(this).html();
            var tv = $(this).attr('alt');
-           $("#time .dropdown_list").slideUp('fast');
-           $("#time .selected_item span").html(tx);
-           $("#time .selected_item").html(tv);
+           $(ID_TIME + " " + ".dropdown_list").slideUp('fast');
+           $(ID_TIME + " " + ".selected_item span").html(tx);
+           $(ID_TIME + " " + ".selected_item").html(tv);
+           postsParams.time = $(this).attr('value');
        });
-   $("#sort .selected_item").click
+   $(ID_SORT + " " + ".selected_item").click
    (
        function(){
-                     $("#sort .dropdown_list").slideToggle('fast');
+                     $(ID_SORT + " " + ".dropdown_list").slideToggle('fast');
                  }
    );
-   $('#sort ul.dropdown_list li').click
+   $(ID_SORT + " " + "ul.dropdown_list li").click
    (
        function()
        {
            var tx = $(this).html();
            var tv = $(this).attr('alt');
-           $("#sort .dropdown_list").slideUp('fast');
-           $("#sort .selected_item span").html(tx);
-           $("#sort .selected_item").html(tv);
+           $(ID_SORT + " " + ".dropdown_list").slideUp('fast');
+           $(ID_SORT + " " + ".selected_item span").html(tx);
+           $(ID_SORT + " " + ".selected_item").html(tv);
+           postsParams.sortby = $(this).attr('value');
        });
 });

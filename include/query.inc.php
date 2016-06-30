@@ -14,12 +14,14 @@
     }
     function getLastPageFromDB()
     {
+        dbInitialConnect();
         $onePage = dbQueryGetResult("SELECT * FROM posts ORDER BY post_time DESC LIMIT 1");
         $onePage = (!empty($onePage)) ? $onePage[0] : array();
         return $onePage;
     }
     function getPagesByDate()
     {
+        dbInitialConnect();
         $pagesArray = dbQueryGetResult("SELECT * FROM posts ORDER BY post_time DESC");
         $pagesArray = (!empty($pagesArray)) ? $pagesArray : array();
         return $pagesArray;

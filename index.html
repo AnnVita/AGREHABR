@@ -21,32 +21,32 @@
         <li class="menu_item" id="theme">
           <div class="selected_item"><span>Все подряд</span> <i class="fa fa-caret-down" aria-hidden="true"></i></div>
           <ul class="dropdown_list">
-            <li>Все подряд</li>
-            <li>Разработка</li>
-            <li>Дизайн</li>
-            <li>Управление</li>
-            <li>Маркетинг</li>
-            <li>Разное</li>
+            <li value="all">Все подряд</li>
+            <li value="development">Разработка</li>
+            <li value="design">Дизайн</li>
+            <li value="management">Управление</li>
+            <li value="marketing">Маркетинг</li>
+            <li value="different">Разное</li>
           </ul>
         </li>
         <li class="menu_item" id="time">
           <div class="selected_item"><span>За последние сутки</span> <i class="fa fa-caret-down" aria-hidden="true"></i></div>
           <ul class="dropdown_list">
-            <li class="active">За последние сутки</li>
-            <li>Вчера</li>
-            <li>За 7 дней</li>
+            <li value="day">За последние сутки</li>
+            <li value="lastDay">Вчера</li>
+            <li value="week">За 7 дней</li>
           </ul>
         </li>
         <li class="menu_item" id="sort">
           <div class="selected_item"><span>по дате</span> <i class="fa fa-caret-down" aria-hidden="true"></i></div>
           <ul class="dropdown_list">
-            <li class="active">по дате</li>
-            <li>по популярности</li>
+            <li value="bydate">по дате</li>
+            <li value="bypopularity">по популярности</li>
           </ul>
         </li>
       </ul>
       <ul class="content_container">
-        
+        <div id="loading"><i class="fa fa-circle-o-notch" aria-hidden="true"></i> Загрузка...</div>
       </ul>
     </div>
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>

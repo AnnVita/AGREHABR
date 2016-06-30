@@ -204,17 +204,34 @@ header
     color: #004050;
     font-family: 'Source Sans Pro', Arial, Verdana;
     font-size: 14px;
+    overflow: hidden;
+}
+
+.description img
+{
+    width:auto;
+    max-width:100%;
+    height:auto;
+}
+
+.description code
+{
+    width: auto;
+    width: 95%;
+    margin: auto;
+    background-color: #F0FFFF;
+}
+
+.description a
+{
+    color: #004050;
 }
 
 @media screen and (min-width: 1261px)
 {
     .header_container
         {
-        width: 1200px;
-    }
-    .body_container
-        {
-        width: 1200px;
+        width: 95%;
     }
     .content_container
        {
