@@ -1,6 +1,15 @@
+var display = true;
 $(function(){
-   var flip = 0;
-    $("#view_buttion").click(function () {
-      $(".description").toggle( flip++ % 2 == 0 );
+    $("#view_buttion").click(function () 
+    {
+        if(display)
+        {
+      	    $(".description").css( 'display', 'none' );
+            display = false;
+        } else
+        {
+            $(".description").css( 'display', 'block' );
+            display = true;
+        }
     });
 });

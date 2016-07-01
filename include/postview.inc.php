@@ -9,3 +9,8 @@
         }
         return $postsArray;
     }
+    function postForFullView($post)
+    {
+        $post["full_text"] = strstr($post["full_text"] , "<a name=\"habracut\"></a>", false);
+        return $post;
+    }

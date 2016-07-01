@@ -1,4 +1,4 @@
-var lastId = 0;
+
 var engine = {
 
 	posts : [],
@@ -9,13 +9,15 @@ var engine = {
 	render : function(obj){
 		var xhtml = '<li class="publication" id="post_' + obj.page_id + '">';
                 xhtml += '<div class = date>' + obj.post_time + '</div>';
-                xhtml += '<a href="stream" title="Stream" class="publication_stream">' + obj.flow + ' <i class="fa fa-arrow-right" aria-hidden="true"></i></a>';
-                xhtml += '<a href="title" title="title" class="publication_title"> ' + obj.title + '</a>';
+                xhtml += '<a href="https://habrahabr.ru/all/" title="Stream" class="publication_stream">' + obj.flow + ' <i class="fa fa-arrow-right" aria-hidden="true"></i></a>';
+                xhtml += '<a href="https://habrahabr.ru/post/' + obj.page_id + '" title="title" class="publication_title"> ' + obj.title + '</a>';
                 xhtml += '<ul class="hub_list"> <li><a href="URL" title="Hub">' + obj.hubs + '</a></li></ul>';
                 xhtml += '<div class="description">' + obj.description + '</div>';
                 xhtml += '<ul class="hub_list"> <li><a href="URL" title="Hub">' + obj.tags + '</a></li></ul>';
                 xhtml += '<div class="publication_footer">';
-                xhtml += '</div>';
+                xhtml += '<i class="fa fa-eye" aria-hidden="true"></i><span class=views>'+ obj.views +'</span>';
+                xhtml += '<i class="fa fa-certificate" aria-hidden="true"></i><span class=favorite>'+ obj.favorite +'</span>';
+                xhtml += '<a href="https://habrahabr.ru/post/' + obj.page_id + '" class="read_all">Читать на сайте</a></div>';
                 xhtml += '</li>';
                 lastId++;
 		return xhtml;
@@ -58,8 +60,7 @@ var engine = {
 		if (!this.target || this.busy) return;
 		this.setBusy(true);
 		var that = this;
-
-		$.getJSON('include/poststopage.php', {count:this.count, last:lastId},
+              		$.getJSON('include/poststopage.php', {count:this.count, last:lastId, theme:postsParams.theme, time:postsParams.time, sortby:postsParams.sortby},
 			function(data)
                         {
 				if (data.length > 0) 
@@ -89,8 +90,9 @@ var engine = {
 	}
 };
 
-// usage
 $(document).ready(function(){
 	engine.init(null, $(".content_container"));
 	engine.get();
+    
+ 
 });

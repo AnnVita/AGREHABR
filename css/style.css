@@ -122,7 +122,7 @@ header
     background-color: #20b29A;
     margin: 0 auto 10px auto;
     padding: 5px 0 5px 10px;
-    box-sizing: border-box;
+    box-sizing: border-box; 
 }
 
 .selected_item
@@ -148,6 +148,7 @@ header
     position: absolute;
     border: 1px solid #008B8B;
     display: none;
+    border-radius: 8px; 
 }
 
 .dropdown_list li
@@ -172,11 +173,18 @@ header
     box-sizing: border-box;
 }
 
+.date
+{
+    color: #9090B0;
+    font-family: 'Source Sans Pro', Arial, Verdana;
+    font-size: 12px;
+}
+
 .publication_title
 {
-    color: #9090B0; /*#004050;*/
+    color: #9090B0;
     font-family: 'Source Sans Pro', Arial, Verdana;
-    font-size: 19px;
+    font-size: 22px;
 }
 
 .hub_list li
@@ -196,7 +204,7 @@ header
     display: inline-block;
     color: #5F9EA0;
     font-family: 'Source Sans Pro', Arial, Verdana;
-    font-size: 19px;
+    font-size: 22px;
 }
 
 .description
@@ -227,6 +235,38 @@ header
     color: #004050;
 }
 
+.publication_footer
+{
+    background-color: #F0FFFF;
+    overflow: hidden;
+    font-family: 'Source Sans Pro', Arial, Verdana;
+    font-size: 14px;
+    padding: 10px;
+}
+
+.publication_footer span
+{
+    color: #004050;
+    font-family: 'Source Sans Pro', Arial, Verdana;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.read_all
+{
+    float: right;
+    margin: 2px;
+    padding: 6px;
+    border: 1px solid #008B8B;
+    border-radius: 8px; 
+}
+
+.publication_footer a
+{
+    color: #004050;
+    background-color: #FFFFFF;
+}
+
 @media screen and (min-width: 1261px)
 {
     .header_container
@@ -234,7 +274,7 @@ header
         width: 95%;
     }
     .content_container
-       {
+        {
         width: 95%;
     }
     .sort_menu
