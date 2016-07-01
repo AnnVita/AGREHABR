@@ -12,7 +12,7 @@ function cleanContentContainer()
     $("li.publication").remove();
     lastId = 0;
     engine.init(null, $(".content_container"));
-	engine.get();
+    engine.get();
 }
 $(function(){
    $(ID_THEME + " " + ".selected_item").click
@@ -27,9 +27,9 @@ $(function(){
        {
            var tx = $(this).html();
            var tv = $(this).attr('alt');
-           $("#theme .dropdown_list").slideUp('fast');
-           $("#theme .selected_item span").html(tx);
-           $("#theme .selected_item").html(tv);
+           $(ID_THEME + " " + ".dropdown_list").slideUp('fast');
+           $(ID_THEME + " " + ".selected_item span").html(tx);
+           $(ID_THEME + " " + ".selected_item").html(tv);
            postsParams.theme = $(this).attr('value');
            cleanContentContainer();
        });
@@ -49,7 +49,6 @@ $(function(){
            $(ID_TIME + " " + ".selected_item span").html(tx);
            $(ID_TIME + " " + ".selected_item").html(tv);
            postsParams.time = $(this).attr('value');
-           console.log(postsParams.time);
            cleanContentContainer();
        });
    $(ID_SORT + " " + ".selected_item").click

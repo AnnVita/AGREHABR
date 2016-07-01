@@ -92,7 +92,5 @@ var engine = {
 
 $(document).ready(function(){
 	engine.init(null, $(".content_container"));
-	engine.get();
-    
- 
+	engine.get(); 
 });
