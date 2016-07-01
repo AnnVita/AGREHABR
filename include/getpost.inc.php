@@ -1,7 +1,6 @@
 <?php
     require_once 'simple_html_dom.php';
     require_once 'date.inc.php';
-    header('Content-type: text/html; charset=utf-8');
     function getLastIdFromPage($pageName)
     {
         $html = file_get_html($pageName);

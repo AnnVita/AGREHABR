@@ -28,4 +28,3 @@
     dbInitialConnect();
     delPostsFromDB(strtotime("-" . TIME_RANGE . " day"));
     newPostsToDB();
-    //cron stream_context_create
